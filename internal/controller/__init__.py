@@ -2,14 +2,14 @@ import sqlite3
 import io
 
 
-'''
-    Functions Natives
-'''
+class Database_Controller:
+    def __init__(self) -> None:
+        pass
 
 
-# class Database_Controller:
-#     def __init__(self) -> None:
-#         pass
+def new_database_controller():
+    return Database_Controller()
+
 
 def backup_db():
     conn = sqlite3.connect('dat.db')
