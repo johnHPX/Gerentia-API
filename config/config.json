@@ -1,0 +1,7 @@
+{
+    "Project_Name": "internal-API",
+    "Root_Path": "./internal/",
+    "API_Port": 8000,
+    "Version": "1.0",
+    "Dev_mode": true
+}

@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/hardprox/Documentos/S.I-IFCE/AP2/Projetos/Gerentia-API/venv"
+VIRTUAL_ENV="/home/hardprox/Documentos/S.I-IFCE/AP2/Projetos/internal-API/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

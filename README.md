@@ -1,2 +1,2 @@
-# Gerentia-API
-API do Projeto Gerentia da diciplina de AP2
+# internal-API
+API do Projeto internal da diciplina de AP2

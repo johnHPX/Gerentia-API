@@ -1,23 +1,26 @@
 CREATE TABLE IF NOT EXISTS tb_funcionarios(
-    matricula varchar(32) not null,
-    nome varchar(255) not null,
-    cargo varchar(255) not null,
-    nome_usuario varchar(255) not null,
-    senha varchar(255) not null,
+    matricula varchar(32) PRIMARY KEY,
+    nome varchar(255) NOT NULL,
+    cargo varchar(255) NOT NULL,
+    nome_usuario varchar(255) NOT NULL,
+    senha varchar(255) NOT NULL,
     data_atual DATE DEFAULT CURRENT_DATE, 
     hora_atual TIME DEFAULT CURRENT_TIME,
-    PRIMARY KEY (matricula)
+    status numeric NOT NULL,
+    sincronizado numeric NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS tb_estoque(
-    cod NOT NULL PRIMARY KEY,
+    cod varchar(32) PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     descricao TEXT NOT NULL, 
     quantidade INTEGER NOT NULL, 
     preco_compra REAL NOT NULL, 
     preco_venda REAL NOT NULL, 
     data_atual DATE DEFAULT CURRENT_DATE, 
-    hora_atual TIME DEFAULT CURRENT_TIME
+    hora_atual TIME DEFAULT CURRENT_TIME,
+    status numeric NOT NULL,
+    sincronizado numeric NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS tb_vendas(
@@ -27,6 +30,8 @@ CREATE TABLE IF NOT EXISTS tb_vendas(
     valor REAL NOT NULL, 
     total REAL NOT NULL, 
     data DATE DEFAULT CURRENT_DATE, 
-    hora TIME DEFAULT CURRENT_TIME
+    hora TIME DEFAULT CURRENT_TIME,
+    status numeric NOT NULL,
+    sincronizado numeric NOT NULL
 );
 

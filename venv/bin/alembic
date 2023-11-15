@@ -1,4 +1,4 @@
-#!/home/hardprox/Documentos/S.I-IFCE/AP2/Projetos/Gerentia-API/venv/bin/python3
+#!/home/hardprox/Documentos/S.I-IFCE/AP2/Projetos/internal-API/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
