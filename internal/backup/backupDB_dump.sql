@@ -11,6 +11,7 @@ CREATE TABLE tb_estoque(
     status numeric NOT NULL,
     sincronizado numeric NOT NULL
 );
+INSERT INTO "tb_estoque" VALUES('232423342','sabonete 2','sabonete Dove 2',10,3.95,15.4,'2023-11-15','20:17:05',0,1);
 CREATE TABLE tb_funcionarios(
     matricula varchar(32) PRIMARY KEY,
     nome varchar(255) NOT NULL,
@@ -22,6 +23,7 @@ CREATE TABLE tb_funcionarios(
     status numeric NOT NULL,
     sincronizado numeric NOT NULL
 );
+INSERT INTO "tb_funcionarios" VALUES('20222082121231253','jonatas','Dev','johnHPX','jonatas123','2023-11-15','05:29:16',0,1);
 CREATE TABLE tb_vendas(
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
     nome TEXT NOT NULL, 
