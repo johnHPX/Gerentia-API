@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, abort
+from flask import Flask, request, jsonify
 import internal.model as model
 import internal.controller as controller
 
@@ -28,4 +28,18 @@ def init_stock_routes(app: Flask):
 
     @app.route('/api/stock/local', methods=['GET'])
     def synchronize_to_local_stock():
-        return jsonify({"MID": "Ok!"})
+        stock_model = model.Estoque()
+        stock_controller = controller.new_stock_controller(stock_model)
+        result = stock_controller.local()
+
+        if result is Exception:
+            response = jsonify({"error": result.args[0]})
+            response.status_code = 500
+            return response
+
+        response = {
+            "MID": "OK!",
+            "content": result
+        }
+
+        return jsonify(response)

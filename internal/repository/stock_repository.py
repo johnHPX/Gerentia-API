@@ -7,6 +7,14 @@ class Estoque_Repository:
         self.conn = sqlite3.connect("internal/db/dat.db")
         self.model = estoque_model
 
+    def backup(self, file_name):
+        with open(file_name, 'w') as arquivo_sql:
+            for linha in self.conn.iterdump():
+                if 'INSERT INTO "tb_estoque"' in linha:
+                    arquivo_sql.write('%s\n' % linha)
+
+        self.conn.close()
+
     def store(self) -> Exception | None:
         try:
             cursor = self.conn.cursor()
