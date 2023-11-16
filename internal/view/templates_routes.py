@@ -1,7 +1,7 @@
-from flask import render_template
+from flask import Flask, render_template
 
 
-def init_templates_routes(app):
+def init_templates_routes(app: Flask):
     # Routes templates
     @app.route('/',  methods=['GET'])
     @app.route('/home', methods=['GET'])

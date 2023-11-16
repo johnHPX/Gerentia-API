@@ -1,6 +1,6 @@
 
 class Funcionarios:
-    def __init__(self, matricula, nome, cargo, nome_usuario, senha, data_atual, hora_atual, status, sincronizado) -> None:
+    def __init__(self, matricula: int, nome: str, cargo: str, nome_usuario: str, senha: str, data_atual: str, hora_atual: str, status: int, sincronizado: int) -> None:
         self.matricula = matricula
         self.nome = nome
         self.cargo = cargo
@@ -13,7 +13,7 @@ class Funcionarios:
 
 
 class Estoque:
-    def __init__(self, cod, nome, descricao, quantidade, preco_compra, preco_venda, data_atual, hora_atual, status, sincronizado) -> None:
+    def __init__(self, cod: str, nome: str, descricao: str, quantidade: int, preco_compra: float, preco_venda: float, data_atual: str, hora_atual: str, status: int, sincronizado: int) -> None:
         self.cod = cod
         self.nome = nome
         self.descricao = descricao
@@ -27,7 +27,7 @@ class Estoque:
 
 
 class Vendas:
-    def __init__(self, id, nome, quantidade, valor, total, data, hora, status, sincronizado) -> None:
+    def __init__(self, id: int, nome: str, quantidade: int, valor: int, total: int, data: str, hora: str, status: int, sincronizado: int) -> None:
         self.id = id
         self.nome = nome
         self.quantidade = quantidade

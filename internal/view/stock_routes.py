@@ -1,17 +1,13 @@
-from flask import request, jsonify
+from flask import Flask, request, jsonify, make_response
 import internal.model as model
 import internal.controller as controller
 
 
-def init_stock_routes(app):
+def init_stock_routes(app: Flask):
     # Routes stock
-    @app.route('/api/stock/sinc', methods=['POST'])
-    def synchronize_stock():
+    @app.route('/api/stock/sinc', methods=['POST', 'PUT', 'DELETE'])
+    def synchronize_to_api_stock():
         obj = request.get_json()
-
-        # if isinstance(obj['hora_atual'], str):
-        #     obj['hora_atual'] = datetime.strptime(
-        #         obj['hora_atual'], '%H:%M:%S').time()
 
         stock_model = model.Estoque(
             obj['cod'], obj['nome'], obj['descricao'], obj['quantidade'], obj['preco_compra'],
@@ -19,9 +15,17 @@ def init_stock_routes(app):
         )
 
         stock_controller = controller.new_stock_controller(stock_model)
-        stock_controller.synchronize()
-        return jsonify({"MID": "Ok!"})
+        error = stock_controller.synchronize()
+
+        if error != None:
+            resp = make_response(jsonify({"MID": error}))
+            resp.status_code = 500
+            return resp
+
+        resp = make_response(jsonify({"MID": "Ok!"}))
+        resp.status_code = 200
+        return resp
 
     @app.route('/api/stock/local', methods=['GET'])
-    def local_stock():
+    def synchronize_to_local_stock():
         return jsonify({"MID": "Ok!"})
