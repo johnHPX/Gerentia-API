@@ -37,5 +37,7 @@ CREATE TABLE tb_vendas(
     status numeric NOT NULL,
     sincronizado numeric NOT NULL
 );
+INSERT INTO "tb_vendas" VALUES(1,'venda 1',10,240.7,5.0,'2023-11-15','18:17:13',0,1);
 DELETE FROM "sqlite_sequence";
+INSERT INTO "sqlite_sequence" VALUES('tb_vendas',1);
 COMMIT;

@@ -37,9 +37,11 @@ def init_stock_routes(app: Flask):
             response.status_code = 500
             return response
 
-        response = {
-            "MID": "OK!",
-            "content": result
+        resp_obj = {
+            "Content": result,
+            "MID": "OK!"
         }
 
-        return jsonify(response)
+        response = jsonify(resp_obj)
+        response.status_code = 200
+        return response

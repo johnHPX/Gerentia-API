@@ -23,9 +23,9 @@ class Estoque_Controller:
                 stock_rep = repository.new_stock_repository(self.model)
                 return stock_rep.remove()
             else:
-                return Exception("Error: status invalido.")
+                return Exception("Erro: Status não é valido.")
         else:
-            return Exception("Error: Estoque já sincronizado.")
+            return Exception("Erro: Registro já sincronizado.")
 
     def local(self):
         self.backup_db()
