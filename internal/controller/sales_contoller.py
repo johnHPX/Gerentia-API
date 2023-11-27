@@ -7,8 +7,8 @@ class Vendas_Controller:
         self.model = vendas_model
 
     def backup_db(self):
-        db_rep = repository.new_db_repository()
-        db_rep.backup_db()
+        sales_rep = repository.new_sales_repository(self.model)
+        sales_rep.backup("internal/backup/backupDB_sales_dump.sql")
 
     def synchronize(self):
         self.backup_db()
@@ -33,10 +33,4 @@ class Vendas_Controller:
     def local(self):
         self.backup_db()
         sale_rep = repository.new_sales_repository(self.model)
-        sale_rep.backup("internal/backup/backupDB_sales_dump.sql")
-        try:
-            with open("internal/backup/backupDB_sales_dump.sql", 'r') as arquivo_sql:
-                conteudo_sql = arquivo_sql.read()
-            return conteudo_sql
-        except Exception as error:
-            return error
+        return sale_rep.list()

@@ -63,3 +63,36 @@ class Estoque_Repository:
             self.conn.commit()
             self.conn.close()
             return None
+
+    def list(self) -> list[dict] | Exception:
+        dto = list()
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute(
+                "SELECT * FROM tb_estoque"
+            )
+
+            for i in cursor.fetchall():
+                obj = dict()
+                obj['cod'] = i[0]
+                obj['nome'] = i[1]
+                obj['descricao'] = i[2]
+                obj['quantidade'] = i[3]
+                obj['preco_compra'] = i[4]
+                obj['preco_venda'] = i[5]
+                obj['data_atual'] = i[6]
+                obj['hora_atual'] = i[7]
+                obj['status'] = i[8]
+                obj['sincronizado'] = i[9]
+                dto.append(obj)
+
+        except Exception as error:
+            cursor.close()
+            self.conn.commit()
+            self.conn.close()
+            return error
+        else:
+            cursor.close()
+            self.conn.commit()
+            self.conn.close()
+            return dto

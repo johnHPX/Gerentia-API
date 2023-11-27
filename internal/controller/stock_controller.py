@@ -7,8 +7,8 @@ class Estoque_Controller:
         self.model = estoque_model
 
     def backup_db(self):
-        db_rep = repository.new_db_repository()
-        db_rep.backup_db()
+        stock_rep = repository.new_stock_repository(self.model)
+        stock_rep.backup("internal/backup/backupDB_stock_dump.sql")
 
     def synchronize(self):
         self.backup_db()
@@ -30,10 +30,4 @@ class Estoque_Controller:
     def local(self):
         self.backup_db()
         stock_rep = repository.new_stock_repository(self.model)
-        stock_rep.backup("internal/backup/backupDB_stock_dump.sql")
-        try:
-            with open("internal/backup/backupDB_stock_dump.sql", 'r') as arquivo_sql:
-                conteudo_sql = arquivo_sql.read()
-            return conteudo_sql
-        except Exception as error:
-            return error
+        return stock_rep.list()

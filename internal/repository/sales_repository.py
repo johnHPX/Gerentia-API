@@ -63,3 +63,35 @@ class Vendas_Repository:
             self.conn.commit()
             self.conn.close()
             return None
+
+    def list(self) -> list[dict] | Exception:
+        dto = list()
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute(
+                "SELECT * FROM tb_vendas"
+            )
+
+            for i in cursor.fetchall():
+                obj = dict()
+                obj['id'] = i[0]
+                obj['nome'] = i[1]
+                obj['quantidade'] = i[2]
+                obj['valor'] = i[3]
+                obj['total'] = i[4]
+                obj['data_atual'] = i[5]
+                obj['hora_atual'] = i[6]
+                obj['status'] = i[7]
+                obj['sincronizado'] = i[8]
+                dto.append(obj)
+
+        except Exception as error:
+            cursor.close()
+            self.conn.commit()
+            self.conn.close()
+            return error
+        else:
+            cursor.close()
+            self.conn.commit()
+            self.conn.close()
+            return dto

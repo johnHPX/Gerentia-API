@@ -1,5 +1,5 @@
 {
-    "Project_Name": "internal-API",
+    "Project_Name": "Gerentia_API",
     "Root_Path": "./internal/",
     "API_Port": 8000,
     "Version": "1.0",

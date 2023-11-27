@@ -1,5 +1,6 @@
 from flask import Flask
 import json
+import internal.routes as routes
 import internal.view as view
 
 # Reading config.json
@@ -11,6 +12,7 @@ app = Flask(
     root_path=config['Root_Path']
 )
 
+routes.init_routes(app)
 view.init_view(app)
 
 if __name__ == '__main__':

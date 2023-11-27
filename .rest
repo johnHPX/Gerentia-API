@@ -1,0 +1,42 @@
+###
+
+GET http://localhost:8000/api/stock/local  HTTP/1.1
+
+###
+
+POST http://localhost:8000/api/stock/sinc HTTP/1.1
+Content-Type: application/json
+
+{
+	"cod": "1234583",
+	"nome": "produto aleatorio 333",
+	"descricao": "qual quer coisa 333",
+	"quantidade": 15,
+	"preco_compra": 7.95,
+	"preco_venda": 15.40,
+	"data_atual": "2023-11-15",
+	"hora_atual": "12:30:00",
+	"status": 0,
+	"sincronizado": 0
+}
+
+###
+
+GET http://localhost:8000/api/sales/local  HTTP/1.1
+
+###
+
+POST http://localhost:8000/api/sales/sinc HTTP/1.1
+Content-Type: application/json
+
+{
+	"id": 1,
+	"nome": "venda 1",
+	"quantidade": 10,
+	"valor": 240.70,
+	"total": 5,
+	"data": "2023-11-15",
+	"hora": "12:30:00",
+	"status": 0,
+	"sincronizado": 0
+}

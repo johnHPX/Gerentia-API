@@ -1,4 +1,6 @@
-#!/home/hardprox/Documentos/S.I-IFCE/AP2/Projetos/internal-API/venv/bin/python3
+#!/bin/sh
+'''exec' "/home/jonatas/Documentos/S.I IFCE/AP2 - Yuri/Gerentia-API/venv/bin/python3" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys
