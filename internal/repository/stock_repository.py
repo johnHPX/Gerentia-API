@@ -22,7 +22,6 @@ class Estoque_Repository:
                 "INSERT INTO tb_estoque (cod, nome, descricao, quantidade, preco_compra, preco_venda, data_atual, status, sincronizado) VALUES (?,?,?,?,?,?,?,?,?)", (self.model.cod, self.model.nome, self.model.descricao, self.model.quantidade, self.model.preco_compra, self.model.preco_venda, self.model.data_atual, self.model.status, 1))
         except Exception as error:
             cursor.close()
-            self.conn.commit()
             self.conn.close()
             return error
         else:
@@ -38,7 +37,6 @@ class Estoque_Repository:
                 "UPDATE tb_estoque SET nome = ?, descricao = ?, quantidade = ?, preco_compra = ?, preco_venda = ?, status = ?, sincronizado = ? WHERE cod = ?", (self.model.nome, self.model.descricao, self.model.quantidade, self.model.preco_compra, self.model.preco_venda, self.model.status, 1, self.model.cod))
         except Exception as error:
             cursor.close()
-            self.conn.commit()
             self.conn.close()
             return error
         else:
@@ -55,7 +53,6 @@ class Estoque_Repository:
             )
         except Exception as error:
             cursor.close()
-            self.conn.commit()
             self.conn.close()
             return error
         else:
@@ -88,7 +85,6 @@ class Estoque_Repository:
 
         except Exception as error:
             cursor.close()
-            self.conn.commit()
             self.conn.close()
             return error
         else:

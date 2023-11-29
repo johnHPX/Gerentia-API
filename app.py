@@ -1,7 +1,6 @@
 from flask import Flask
 import json
 import internal.routes as routes
-import internal.view as view
 
 # Reading config.json
 with open('config/config.json', 'r', encoding='utf-8') as arquivo:
@@ -13,7 +12,6 @@ app = Flask(
 )
 
 routes.init_routes(app)
-view.init_view(app)
 
 if __name__ == '__main__':
     print(f'Verion: {config["Version"]}')

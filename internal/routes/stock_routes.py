@@ -9,10 +9,14 @@ def init_stock_routes(app: Flask):
     def synchronize_to_api_stock():
         obj = request.get_json()
 
-        stock_model = model.Estoque(
-            obj['cod'], obj['nome'], obj['descricao'], obj['quantidade'], obj['preco_compra'],
-            obj['preco_venda'], obj['data_atual'], obj['hora_atual'], obj['status'], obj['sincronizado']
-        )
+        if obj['status'] == 2:
+            stock_model = model.Estoque(
+                cod=obj['cod'], status=obj['status'], sincronizado=obj['sincronizado'])
+        else:
+            stock_model = model.Estoque(
+                obj['cod'], obj['nome'], obj['descricao'], obj['quantidade'], obj['preco_compra'],
+                obj['preco_venda'], obj['data_atual'], obj['hora_atual'], obj['status'], obj['sincronizado']
+            )
 
         stock_controller = controller.new_stock_controller(stock_model)
         error = stock_controller.synchronize()

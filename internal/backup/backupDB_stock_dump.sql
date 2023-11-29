@@ -6,3 +6,6 @@ INSERT INTO "tb_estoque" VALUES('12345834923s55','produto aleatorio','qual quer 
 INSERT INTO "tb_estoque" VALUES('1234583492382155','produto aleatorio 333','qual quer coisa 333',15,7.95,15.4,'2023-11-15','08:34:02',0,1);
 INSERT INTO "tb_estoque" VALUES('1234583','produto aleatorio 333','qual quer coisa 333',15,7.95,15.4,'2023-11-15','15:05:02',0,1);
 INSERT INTO "tb_estoque" VALUES('12346579320','produto ivone','nâo existe mulher feia , existe mulher que não conhece os produtos ivones',15,7.95,15.4,'2023-11-15','21:54:53',0,1);
+INSERT INTO "tb_estoque" VALUES('dcd7c180-a1a1-4e12-8c85-a5457e9b063f','JEQUITI','NÃO EXISTE MULHE FEIA, EXISTE MULHER QUE NÃO CONHECE OS PRODUTOS JEQUITI',10,125.0,250.0,'27/11/2023','00:36:34',0,1);
+INSERT INTO "tb_estoque" VALUES('b4ce6249-29f0-4bdc-8b18-153fa55cc506','JEQUITI jonatas','alterado',40,120.0,250.0,'28/11/2023','19:22:21',1,1);
+INSERT INTO "tb_estoque" VALUES('67c06d8d-c212-437a-af56-a2d3430ac024','produto 1','produto alterad',99,100.0,200.0,'28/11/2023','23:39:33',1,1);
