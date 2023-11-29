@@ -5,7 +5,7 @@ import internal.controller as controller
 
 def init_sales_routes(app: Flask):
     # Routes sales
-    @app.route('/api/sales/sinc', methods=['POST', 'PUT', 'DELETE'])
+    @app.route('/api/sales/sinc', methods=['POST'])
     def synchronize_to_api_sales():
         obj = request.get_json()
 
@@ -24,12 +24,12 @@ def init_sales_routes(app: Flask):
         if error != None:
             response = jsonify({"error": error.args[0]})
             response.status_code = 500
-            app.logger.info('GET /api/admin/local HTTP/1.1 500')
+            app.logger.info('POST /api/sales/sinc HTTP/1.1 500')
             return response
 
         response = jsonify({"MID": "OK!"})
         response.status_code = 200
-        app.logger.info('GET /api/admin/local HTTP/1.1 200')
+        app.logger.info('POST /api/sales/sinc HTTP/1.1 200')
         return response
 
     @app.route('/api/sales/local', methods=['GET'])
@@ -41,7 +41,7 @@ def init_sales_routes(app: Flask):
         if result is Exception:
             response = jsonify({"error": result.args[0]})
             response.status_code = 500
-            app.logger.info('GET /api/admin/local HTTP/1.1 500')
+            app.logger.info('GET /api/sales/local HTTP/1.1 500')
             return response
 
         resp_obj = {
@@ -51,5 +51,5 @@ def init_sales_routes(app: Flask):
 
         response = jsonify(resp_obj)
         response.status_code = 200
-        app.logger.info('GET /api/admin/local HTTP/1.1 200')
+        app.logger.info('GET /api/sales/local HTTP/1.1 200')
         return response

@@ -18,6 +18,9 @@ INSERT INTO "tb_estoque" VALUES('12345834923','produto aleatorio','qual quer coi
 INSERT INTO "tb_estoque" VALUES('12345834923s55','produto aleatorio','qual quer coisa',15,7.95,15.4,'2023-11-15','00:13:01',0,1);
 INSERT INTO "tb_estoque" VALUES('1234583492382155','produto aleatorio 333','qual quer coisa 333',15,7.95,15.4,'2023-11-15','08:34:02',0,1);
 INSERT INTO "tb_estoque" VALUES('1234583','produto aleatorio 333','qual quer coisa 333',15,7.95,15.4,'2023-11-15','15:05:02',0,1);
+INSERT INTO "tb_estoque" VALUES('12346579320','produto ivone','nâo existe mulher feia , existe mulher que não conhece os produtos ivones',15,7.95,15.4,'2023-11-15','21:54:53',0,1);
+INSERT INTO "tb_estoque" VALUES('dcd7c180-a1a1-4e12-8c85-a5457e9b063f','JEQUITI','NÃO EXISTE MULHE FEIA, EXISTE MULHER QUE NÃO CONHECE OS PRODUTOS JEQUITI',10,125.0,250.0,'27/11/2023','00:36:34',0,1);
+INSERT INTO "tb_estoque" VALUES('b4ce6249-29f0-4bdc-8b18-153fa55cc506','JEQUITI jonatas','alterado',40,120.0,250.0,'28/11/2023','19:22:21',1,1);
 CREATE TABLE tb_funcionarios(
     matricula varchar(32) PRIMARY KEY,
     nome varchar(255) NOT NULL,
@@ -30,6 +33,8 @@ CREATE TABLE tb_funcionarios(
     sincronizado numeric NOT NULL
 );
 INSERT INTO "tb_funcionarios" VALUES('20222082121231253','jonatas','Dev','johnHPX','jonatas123','2023-11-15','05:29:16',0,1);
+INSERT INTO "tb_funcionarios" VALUES('2','wallyson','dev','wall','w123','2023-11-15','12:30:00',0,0);
+INSERT INTO "tb_funcionarios" VALUES('3','wallyson','dev','wall','w123','2023-11-15','12:30:00',0,1);
 CREATE TABLE tb_vendas(
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
     nome TEXT NOT NULL, 
@@ -42,6 +47,8 @@ CREATE TABLE tb_vendas(
     sincronizado numeric NOT NULL
 );
 INSERT INTO "tb_vendas" VALUES(1,'venda 1',10,240.7,5.0,'2023-11-15','18:17:13',0,1);
+INSERT INTO "tb_vendas" VALUES(2,'venda 1sxa',10,240.7,5.0,'2023-11-15','22:11:53',0,1);
+INSERT INTO "tb_vendas" VALUES(3,'venda 1sxaekowqje',10,240.7,5.0,'2023-11-15','22:12:56',0,1);
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('tb_vendas',1);
+INSERT INTO "sqlite_sequence" VALUES('tb_vendas',3);
 COMMIT;

@@ -13,8 +13,5 @@ class Database_Repository:
                     p.write('%s\n' % line)
         except Exception as e:
             print(e)
-        else:
-            print('Backup performed successfully!')
-            print('Data Saved as backupdatabase_dump.sql')
         finally:
             self.conn.close()

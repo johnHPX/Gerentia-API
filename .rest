@@ -1,3 +1,5 @@
+GET http://localhost:8000/api/admin/do/backup  HTTP/1.1
+
 ###
 
 GET http://localhost:8000/api/admin/local  HTTP/1.1
@@ -8,11 +10,11 @@ POST http://localhost:8000/api/admin/sinc HTTP/1.1
 Content-Type: application/json
 
 {
-	"matricula": 1,	
-	"nome": "",
-	"cargo": "",
-	"nome_usuario": "",
-	"senha": "",
+	"matricula": 4,	
+	"nome": "wallyson",
+	"cargo": "dev",
+	"nome_usuario": "wall",
+	"senha": "w123",
 	"data_atual": "2023-11-15",
 	"hora_atual": "12:30:00",
 	"status": 0,

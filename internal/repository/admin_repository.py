@@ -18,7 +18,7 @@ class Admin_Repository:
         try:
             cursor = self.conn.cursor()
             cursor.execute(
-                f"INSERT INTO {'tb_funcionarios'} (matricula, nome, cargo, nome_usuario, senha, data_atual, hora_atual, status, sincronizado) VALUES (?,?,?,?,?,?,?,?,?)", (self.model.matricula, self.model.nome, self.model.cargo, self.model.nome_usuario, self.model.senha, self.model.data_atual, self.model.hora_atual, self.model.status, self.model.sincronizado))
+                f"INSERT INTO {'tb_funcionarios'} (matricula, nome, cargo, nome_usuario, senha, data_atual, hora_atual, status, sincronizado) VALUES (?,?,?,?,?,?,?,?,?)", (self.model.matricula, self.model.nome, self.model.cargo, self.model.nome_usuario, self.model.senha, self.model.data_atual, self.model.hora_atual, self.model.status, 1))
         except Exception as error:
             cursor.close()
             self.conn.close()

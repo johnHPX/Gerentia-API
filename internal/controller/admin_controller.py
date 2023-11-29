@@ -1,4 +1,4 @@
-from internal.model.funcionarios import Funcionarios
+from internal.model import Funcionarios, Estoque, Vendas
 import internal.repository as repository
 
 
@@ -31,3 +31,18 @@ class Funcionarios_Controller:
         self.backup_db()
         admin_rep = repository.new_admin_repository(self.model)
         return admin_rep.list()
+
+    def do_all_backup(self):
+        # backup admin
+        self.backup_db()
+        # backup stock
+        stock_model = Estoque()
+        stock_rep = repository.new_stock_repository(stock_model)
+        stock_rep.backup("internal/backup/backupDB_stock_dump.sql")
+        # backup sales
+        sales_model = Vendas()
+        sales_rep = repository.new_sales_repository(sales_model)
+        sales_rep.backup("internal/backup/backupDB_sales_dump.sql")
+        # backup database
+        db_rep = repository.new_db_repository()
+        db_rep.backup_db()

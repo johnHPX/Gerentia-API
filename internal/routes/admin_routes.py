@@ -23,12 +23,12 @@ def init_admin_routes(app: Flask):
         if error != None:
             response = jsonify({"error": error.args[0]})
             response.status_code = 500
-            app.logger.info('GET /api/admin/local HTTP/1.1 500')
+            app.logger.info('POST /api/admin/sinc HTTP/1.1 500')
             return response
 
         response = jsonify({"MID": "OK!"})
         response.status_code = 200
-        app.logger.info('GET /api/admin/local HTTP/1.1 200')
+        app.logger.info('POST /api/admin/sinc HTTP/1.1 200')
         return response
 
     @app.route('/api/admin/local', methods=['GET'])
@@ -51,4 +51,15 @@ def init_admin_routes(app: Flask):
         response = jsonify(resp_obj)
         response.status_code = 200
         app.logger.info('GET /api/admin/local HTTP/1.1 200')
+        return response
+
+    @app.route('/api/admin/do/backup', methods=['GET'])
+    def do_backup():
+        admin_model = model.Funcionarios()
+        admin_controller = controller.new_admin_controller(admin_model)
+        admin_controller.do_all_backup()
+
+        response = jsonify({"MID": "OK!"})
+        response.status_code = 200
+        app.logger.info('GET /api/admin/do/backup HTTP/1.1 200')
         return response
