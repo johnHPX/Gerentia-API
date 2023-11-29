@@ -4,7 +4,7 @@ from internal.model.funcionarios import Funcionarios
 
 class Admin_Repository:
     def __init__(self, model_admin: Funcionarios) -> None:
-        self.conn = sqlite3.connect("internal/db/dat.db")
+        self.conn = sqlite3.connect("internal/db/gerentia.db")
         self.model = model_admin
 
     def backup(self, file_name) -> None:

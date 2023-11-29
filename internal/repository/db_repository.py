@@ -4,7 +4,7 @@ import io
 
 class Database_Repository:
     def __init__(self) -> None:
-        self.conn = sqlite3.connect("internal/db/dat.db")
+        self.conn = sqlite3.connect("internal/db/gerentia.db")
 
     def backup_db(self):
         try:

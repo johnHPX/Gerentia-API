@@ -7,6 +7,7 @@ def init_admin_routes(app: Flask):
     # Routes admin
     @app.route('/api/admin/sinc', methods=['POST'])
     def synchronize_to_api_admin():
+        app.logger.info('Exemplo de log de informação')
         obj = request.get_json()
 
         if obj['status'] == 2:
@@ -22,10 +23,12 @@ def init_admin_routes(app: Flask):
         if error != None:
             response = jsonify({"error": error.args[0]})
             response.status_code = 500
+            app.logger.info('GET /api/admin/local HTTP/1.1 500')
             return response
 
         response = jsonify({"MID": "OK!"})
         response.status_code = 200
+        app.logger.info('GET /api/admin/local HTTP/1.1 200')
         return response
 
     @app.route('/api/admin/local', methods=['GET'])
@@ -37,6 +40,7 @@ def init_admin_routes(app: Flask):
         if result is Exception:
             response = jsonify({"error": result.args[0]})
             response.status_code = 500
+            app.logger.info('GET /api/admin/local HTTP/1.1 500')
             return response
 
         resp_obj = {
@@ -46,4 +50,5 @@ def init_admin_routes(app: Flask):
 
         response = jsonify(resp_obj)
         response.status_code = 200
+        app.logger.info('GET /api/admin/local HTTP/1.1 200')
         return response

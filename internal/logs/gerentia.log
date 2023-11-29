@@ -1,0 +1,2 @@
+2023-11-29 00:23:47,395 INFO: Exemplo de log de informação [in /home/jonatas/Documentos/S.I IFCE/AP2 - Yuri/Gerentia-API/internal/routes/admin_routes.py:34]
+2023-11-29 00:26:13,351 INFO: GET /api/admin/local HTTP/1.1 200 [in /home/jonatas/Documentos/S.I IFCE/AP2 - Yuri/Gerentia-API/internal/routes/admin_routes.py:51]

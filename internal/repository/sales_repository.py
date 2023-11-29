@@ -4,7 +4,7 @@ from internal.model import Vendas
 
 class Vendas_Repository:
     def __init__(self, sales_model: Vendas) -> None:
-        self.conn = sqlite3.connect("internal/db/dat.db")
+        self.conn = sqlite3.connect("internal/db/gerentia.db")
         self.model = sales_model
 
     def backup(self, file_name) -> None:
@@ -19,10 +19,9 @@ class Vendas_Repository:
         try:
             cursor = self.conn.cursor()
             cursor.execute(
-                "INSERT INTO tb_vendas (id, nome, quantidade, valor, total, data, status, sincronizado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (self.model.id, self.model.nome, self.model.quantidade, self.model.valor, self.model.total, self.model.data, self.model.status, 1))
+                f"INSERT INTO {'tb_vendas'} (id, nome, quantidade, valor, total, data, status, sincronizado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (self.model.id, self.model.nome, self.model.quantidade, self.model.valor, self.model.total, self.model.data, self.model.status, 1))
         except Exception as error:
             cursor.close()
-            self.conn.commit()
             self.conn.close()
             return error
         else:
@@ -35,10 +34,9 @@ class Vendas_Repository:
         try:
             cursor = self.conn.cursor()
             cursor.execute(
-                "UPDATE tb_vendas SET nome = ?, quantidade = ?, valor = ?, total = ?, status = ?, sincronizado = ? WHERE id = ?", (self.model.nome, self.model.quantidade, self.model.valor, self.model.total, self.model.status, 1, self.model.id))
+                f"UPDATE {'tb_vendas'} SET nome = ?, quantidade = ?, valor = ?, total = ?, status = ?, sincronizado = ? WHERE id = ?", (self.model.nome, self.model.quantidade, self.model.valor, self.model.total, self.model.status, 1, self.model.id))
         except Exception as error:
             cursor.close()
-            self.conn.commit()
             self.conn.close()
             return error
         else:
@@ -51,11 +49,10 @@ class Vendas_Repository:
         try:
             cursor = self.conn.cursor()
             cursor.execute(
-                "DELETE FROM tb_vendas WHERE id = ?", (self.model.id,)
+                f"DELETE FROM {'tb_vendas'} WHERE id = ?", (self.model.id,)
             )
         except Exception as error:
             cursor.close()
-            self.conn.commit()
             self.conn.close()
             return error
         else:
@@ -69,7 +66,7 @@ class Vendas_Repository:
         try:
             cursor = self.conn.cursor()
             cursor.execute(
-                "SELECT * FROM tb_vendas"
+                f"SELECT * FROM {'tb_vendas'}"
             )
 
             for i in cursor.fetchall():
@@ -87,7 +84,6 @@ class Vendas_Repository:
 
         except Exception as error:
             cursor.close()
-            self.conn.commit()
             self.conn.close()
             return error
         else:

@@ -24,10 +24,12 @@ def init_stock_routes(app: Flask):
         if error != None:
             response = jsonify({"error": error.args[0]})
             response.status_code = 500
+            app.logger.info('GET /api/admin/local HTTP/1.1 500')
             return response
 
         response = jsonify({"MID": "OK!"})
         response.status_code = 200
+        app.logger.info('GET /api/admin/local HTTP/1.1 200')
         return response
 
     @app.route('/api/stock/local', methods=['GET'])
