@@ -50,19 +50,7 @@ curl -X GET http://localhost:8000/api/stock/local
 
 - **404 Not Found**: Quando o endpointer está escrito incorretamente.
 
-```json
-{
-  "mensagem": "Página não encontrada."
-}
-```
-
 - **500 Internal Server Error**: Quando há um problema no servidor.
-
-```json
-{
-  "mensagem": "Problemas no servidor."
-}
-```
 
 
 ## 2. Sincronizar dados local de Estoque para o servidor (POST)
@@ -77,13 +65,13 @@ Esta funcionalidade permite cadastrar, atulizar e deletar dados do banco de dado
 
 Os campos `status` e `sincronizado` servem como parâmentros para a tomada de decisão da API. 
 
-`status` indica a ação que foi realizada para esse dados; Há 3 possíveis valores:
+`status` -> indica a ação que foi realizada para esse dados; Há 3 possíveis valores:
 
 0 -> indica que o dado foi criado. <br>
 1 -> indica que o dado foi atualizado. <br>
 2 -> indica que o dado foi deletado.
 
-`sincronizado` indica se o dado foi sincronizado com o servidor ou não; Há 2 possíveis valores:
+`sincronizado` -> indica se o dado foi sincronizado com o servidor ou não; Há 2 possíveis valores:
 
 0 -> False. <br>
 1 -> True.
@@ -119,27 +107,12 @@ curl -X POST -H "Content-Type: application/json" -d '{"cod": "1234583492382155",
 
 - **400 Bad Request**: Quando os dados fornecidos não estão corretos ou incompletos.
 
-```json
-{
-  "mensagem": "Dados inválidos. Certifique-se de enviar corretamente todos os dados."
-}
-```
 
 - **404 Not Found**: Quando o endpointer está escrito incorretamente.
 
-```json
-{
-  "mensagem": "Página não encontrada."
-}
-```
 
 - **500 Internal Server Error**: Quando há um problema no servidor.
 
-```json
-{
-  "mensagem": "Problema no servidor."
-}
-```
 
 ## 3. Obter todos os dados cadastrados em Vendas do servidor (GET)
 
@@ -168,10 +141,10 @@ curl -X GET http://localhost:8000/api/sales/local
           "quantidade": 10,
           "valor": 240.70,
           "total": 5,
-          "data": "2023-11-15",
-          "hora": "12:30:00",
+          "data_atual": "2023-11-15",
+          "hora_atual": "12:30:00",
           "status": 0,
-          "sincronizado": 0
+          "sincronizado": 1
         },
     ],
     "MID": "OK!"
@@ -182,19 +155,8 @@ curl -X GET http://localhost:8000/api/sales/local
 
 - **404 Not Found**: Quando o endpointer está escrito incorretamente.
 
-```json
-{
-  "mensagem": "Página não encontrada."
-}
-```
-
 - **500 Internal Server Error**: Quando há um problema no servidor.
 
-```json
-{
-  "mensagem": "Problemas no servidor."
-}
-```
 
 ## 4. Sincronizar dados local de Vendas para o servidor (POST)
 
@@ -208,13 +170,13 @@ Esta funcionalidade permite cadastrar, atulizar e deletar dados do banco de dado
 
 Os campos `status` e `sincronizado` servem como parâmentros para a tomada de decisão da API.
 
-`status` indica a ação que foi realizada para esse dados; Há 3 possíveis valores:
+`status` -> indica a ação que foi realizada para esse dados; Há 3 possíveis valores:
 
 0 -> indica que o dado foi criado. <br>
 1 -> indica que o dado foi atualizado. <br>
 2 -> indica que o dado foi deletado.
 
-`sincronizado` indica se o dado foi sincronizado com o servidor ou não; Há 2 possíveis valores:
+`sincronizado` -> indica se o dado foi sincronizado com o servidor ou não; Há 2 possíveis valores:
 
 0 -> False. <br>
 1 -> True.
@@ -226,8 +188,8 @@ Os campos `status` e `sincronizado` servem como parâmentros para a tomada de de
 - `quantidade` (obrigatório) (int): quantidade.
 - `valor` (obrigatório) (float): valor.
 - `total` (obrigatório) (float): total.
-- `data` (obrigatório) (string): data.
-- `hora` (obrigatório) (string): hora.
+- `data_atual` (obrigatório) (string): data.
+- `hora_atual` (obrigatório) (string): hora.
 - `status` (obrigatório) (int): Status de verificação.
 - `sincronizado` (obrigatório) (int): Sincronização feita.
 
@@ -250,27 +212,141 @@ curl -X POST -H "Content-Type: application/json" -d '{
 
 - **400 Bad Request**: Quando os dados fornecidos não estão corretos ou incompletos.
 
-```json
-{
-  "mensagem": "Dados inválidos. Certifique-se de enviar corretamente todos os dados."
-}
-```
 
 - **404 Not Found**: Quando o endpointer está escrito incorretamente.
 
-```json
-{
-  "mensagem": "Página não encontrada."
-}
-```
 
 - **500 Internal Server Error**: Quando há um problema no servidor.
 
+## 5. Obter todos os dados cadastrados em Funcionarios do servidor (GET)
+
+### Endpoint
+
+```
+GET /api/admin/local HTTP/1.1
+```
+
+Essa funcionalidade permite retorna um lista de dicionarios contendo todos os dados cadastrados na tabela `tb_funcionarios`, de forma que a aplicação local posso utlizar essa lista para atualizar seu banco de dados.
+
+#### Exemplo de Requisição
+
+```bash
+curl -X GET http://localhost:8000/api/admin/local
+```
+
+#### Exemplo de Resposta (200 OK)
+
 ```json
 {
-  "mensagem": "Problema no servidor."
+    "Content": [
+        {
+          "matricula": 4, 
+          "nome": "wallyson",
+          "cargo": "dev",
+          "nome_usuario": "wall",
+          "senha": "w123",
+          "data_atual": "2023-11-15",
+          "hora_atual": "12:30:00",
+          "status": 0,
+          "sincronizado": 1
+        },
+    ],
+    "MID": "OK!"
 }
 ```
+
+#### Respostas de Erro
+
+- **404 Not Found**: Quando o endpointer está escrito incorretamente.
+
+- **500 Internal Server Error**: Quando há um problema no servidor.
+
+## 6. Sincronizar dados local de Funcionarios para o servidor (POST)
+
+### Endpoint
+
+```
+POST /api/admin/sinc HTTP/1.1
+```
+
+Esta funcionalidade permite cadastrar, atulizar e deletar dados do banco de dados do servidor com base nas alterações do banco de dados local.
+
+Os campos `status` e `sincronizado` servem como parâmentros para a tomada de decisão da API.
+
+`status` -> indica a ação que foi realizada para esse dados; Há 3 possíveis valores:
+
+0 -> indica que o dado foi criado. <br>
+1 -> indica que o dado foi atualizado. <br>
+2 -> indica que o dado foi deletado.
+
+`sincronizado` -> indica se o dado foi sincronizado com o servidor ou não; Há 2 possíveis valores:
+
+0 -> False. <br>
+1 -> True.
+
+#### Parâmetros
+
+- `matricula` (obrigatório) (int): Id.
+- `nome` (obrigatório) (string): nome.
+- `cargo` (obrigatório) (string): quantidade.
+- `nome_usuario` (obrigatório) (string): valor.
+- `senha` (obrigatório) (string): total.
+- `data_atual` (obrigatório) (string): data.
+- `hora_atual` (obrigatório) (string): hora.
+- `status` (obrigatório) (int): Status de verificação.
+- `sincronizado` (obrigatório) (int): Sincronização feita.
+
+#### Exemplo de Requisição
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '"matricula": 4, "nome": "wallyson","cargo": "dev","nome_usuario": "wall","senha": "w123","data_atual": "2023-11-15","hora_atual": "12:30:00","status": 0,"sincronizado": 0}' http://localhost:8000/api/stock/sinc 
+```
+
+#### Exemplo de Resposta (200 OK)
+
+```json
+{
+  "MID": "OK"
+}
+```
+
+#### Respostas de Erro
+
+- **400 Bad Request**: Quando os dados fornecidos não estão corretos ou incompletos.
+
+- **404 Not Found**: Quando o endpointer está escrito incorretamente.
+
+- **500 Internal Server Error**: Quando há um problema no servidor.
+
+## 7. Fazer backup geral do banco de dados.
+
+### Endpoint
+
+```
+GET /api/admin/do/backup HTTP/1.1
+```
+
+Essa funcionalidade permite realizar um backup de todos os registros do banco de dados, armazenando em arquivos separadas para cada tabela e um também em um único arquivo.
+
+#### Exemplo de Requisição
+
+```bash
+curl -X GET http://localhost:8000/api/admin/do/backup 
+```
+
+#### Exemplo de Resposta (200 OK)
+
+```json
+{
+    "MID": "OK!"
+}
+```
+
+#### Respostas de Erro
+
+- **404 Not Found**: Quando o endpointer está escrito incorretamente.
+
+- **500 Internal Server Error**: Quando há um problema no servidor.
 
 
 ## Conclusão

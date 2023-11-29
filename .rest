@@ -1,3 +1,5 @@
+##### Admin Endpointers #####
+
 GET http://localhost:8000/api/admin/do/backup  HTTP/1.1
 
 ###
@@ -21,7 +23,7 @@ Content-Type: application/json
 	"sincronizado": 0
 }
 
-###
+##### Stock Endpointers #####
 
 GET http://localhost:8000/api/stock/local  HTTP/1.1
 
@@ -43,7 +45,7 @@ Content-Type: application/json
 	"sincronizado": 0
 }
 
-###
+##### Sales Endpointers #####
 
 GET http://localhost:8000/api/sales/local  HTTP/1.1
 
@@ -58,8 +60,8 @@ Content-Type: application/json
 	"quantidade": 10,
 	"valor": 240.70,
 	"total": 5,
-	"data": "2023-11-15",
-	"hora": "12:30:00",
+	"data_atual": "2023-11-15",
+	"hora_atual": "12:30:00",
 	"status": 0,
 	"sincronizado": 0
 }
