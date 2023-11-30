@@ -25,7 +25,7 @@ Um exemplo: em ambiente de desenvolvimento local, o serviço da API estará escu
 
 // E para executar a API basta rodar o comando:
 
-- python3 app.py 
+- python3 main.py 
 
 ```
 
@@ -39,6 +39,6 @@ Um exemplo: em ambiente de desenvolvimento local, o serviço da API estará escu
 
 // E para executar a API basta rodar o comando:
 
-- python3 app.py 
+- python3 main.py 
 
 ```
