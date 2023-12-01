@@ -34,8 +34,8 @@ def main():
     app.logger.addHandler(log_handler)
 
     routes.init_routes(app)
-
-    print(f'Verion: {config["Version"]}')
+    
+    print(f'Version: {config["Version"]}')
     app.run(port=config["API_Port"], debug=config["Dev_mode"])
 
 
