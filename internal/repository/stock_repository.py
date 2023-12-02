@@ -40,7 +40,7 @@ class Estoque_Repository:
         try:
             cursor = self.conn.cursor()
             cursor.execute(
-                f"INSERT INTO {'tb_estoque'} (cod, nome, descricao, quantidade, preco_compra, preco_venda, data_atual, status, sincronizado) VALUES (?,?,?,?,?,?,?,?,?)", (self.model.cod, self.model.nome, self.model.descricao, self.model.quantidade, self.model.preco_compra, self.model.preco_venda, self.model.data_atual, self.model.status, 1))
+                f"INSERT INTO {'tb_estoque'} (cod, nome, descricao, quantidade, preco_compra, preco_venda, data_atual,hora_atual, status, sincronizado) VALUES (?,?,?,?,?,?,?,?,?,?)", (self.model.cod, self.model.nome, self.model.descricao, self.model.quantidade, self.model.preco_compra, self.model.preco_venda, self.model.data_atual,self.model.hora_atual, self.model.status, 1))
         except Exception as error:
             cursor.close()
             return Exception(102, error.args[0])
