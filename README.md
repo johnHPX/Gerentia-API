@@ -42,3 +42,12 @@ Um exemplo: em ambiente de desenvolvimento local, o serviço da API estará escu
 - python3 main.py 
 
 ```
+
+## Você também pode optar por baixar as bibliotecas ao inves de utilizar o ambiente vitual:
+
+```
+// instala todas as depedências do projeto
+
+- pip install -r requirements.txt
+```
+
