@@ -2,6 +2,8 @@
 
 A API(Application Programming Inteface) do software Gerentia tem como único objetivo ser um meio de comunicação entre os setores de estoque, vendas e administração. É responsável por sincronizar o banco de dados local presente em ambas as aplicações, de forma que todos no final possam ter as mesmas informações. É destinando exclusivamente aos desenvolvedores do software Gerentia: Estoque, Gerentia: Vendas e Gerentia: admin.
 
+Link do repositório do Gerentia: Estoque -> https://github.com/RobertsCJ/Project-Gerentia
+
 ## Avisos
 
 <p> Para usar o serviço, o desenvolvedor precisa conectar a sua aplicação local com a API, utilizando uma URL correspondente ao domínio a qual a API está localizada.
