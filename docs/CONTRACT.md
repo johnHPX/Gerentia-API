@@ -16,7 +16,7 @@ A URL base para todos os endpoints é: `http://localhost:8000`
 GET /api/stock/local HTTP/1.1
 ```
 
-Essa funcionalidade permite retorna um lista de dicionarios contendo todos os dados cadastrados na tabela `tb_estoque`, de forma que a aplicação local posso utlizar essa lista para atualizar seu banco de dados.
+Essa funcionalidade permite retorna um lista de dicionarios contendo todos os dados cadastrados na tabela `tb_estoque`, de forma que a aplicação local possa utlizar essa lista para atualizar seu banco de dados.
 
 
 #### Exemplo de Requisição
